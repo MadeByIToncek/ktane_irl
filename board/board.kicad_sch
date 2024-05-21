@@ -5,6 +5,94 @@
 	(uuid "b5a6c315-00b5-445d-a49f-bfda9e5399e4")
 	(paper "A4")
 	(lib_symbols)
+	(sheet
+		(at 20.32 21.59)
+		(size 12.7 20.32)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "569f2921-3a89-4e88-a759-21a99ccb92c0")
+		(property "Sheetname" "The Button"
+			(at 20.32 20.8784 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "button.kicad_sch"
+			(at 20.32 42.4946 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "GND" input
+			(at 33.02 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "4aa3f482-c7f6-4d30-a5e1-c7be7c32175d")
+		)
+		(pin "SDA" bidirectional
+			(at 33.02 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "ddecaa51-b68c-4ab9-9e20-1d3b0b2fa4a0")
+		)
+		(pin "~{INT}" output
+			(at 33.02 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "02a8ed7c-551d-42d1-99c2-fa2314d7c650")
+		)
+		(pin "SCL" bidirectional
+			(at 33.02 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "be93c465-9530-4f09-9765-8c0147e10537")
+		)
+		(pin "VCC" input
+			(at 33.02 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "98abcd2d-bdb9-4e73-88a4-792a397b9ad2")
+		)
+		(instances
+			(project "board"
+				(path "/b5a6c315-00b5-445d-a49f-bfda9e5399e4"
+					(page "2")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
