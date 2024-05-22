@@ -9,6 +9,7 @@
 build
 /.idea/
 
+
 .gradle
 **/build/
 !src/**/build/
