@@ -1,5 +1,4 @@
-﻿using System;
-using System.Device.I2c;
+﻿using System.Device.I2c;
 
 namespace ktane_irl
 {
@@ -8,10 +7,10 @@ namespace ktane_irl
         static void Main(string[] args)
         {
             Console.WriteLine("Hello I2C!");
-            I2cDevice i2c = I2cDevice.Create(new I2cConnectionSettings(1, 0x12));
-            i2c.WriteByte(0x42);
-            var read = i2c.ReadByte();
-            Console.WriteLine(read);
+            I2cDevice i2c = I2cDevice.Create(new I2cConnectionSettings(1, 8));
+            for (byte i = 0; i < 0xff; i++) {
+                i2c.WriteByte(i);
+            }
         }
     }
 }

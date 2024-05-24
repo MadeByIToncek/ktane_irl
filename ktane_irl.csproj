@@ -5,9 +5,11 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PublishAot>true</PublishAot>
-	  <IsAotCompatible>true</IsAotCompatible>
-	  <OptimizationPreference>Speed</OptimizationPreference>
+	  <PublishSingleFile>true</PublishSingleFile>
+	  <SelfContained>true</SelfContained>
+    <PublishAot>false</PublishAot>
+	<IsAotCompatible>true</IsAotCompatible>
+	<OptimizationPreference>Speed</OptimizationPreference>
     <InvariantGlobalization>true</InvariantGlobalization>
     <Platforms>AnyCPU;ARM64;ARM32;x64;x86</Platforms>
   </PropertyGroup>
