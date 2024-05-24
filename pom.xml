@@ -22,8 +22,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
         <!-- DEPENDENCIES VERSIONS -->
-        <slf4j.version>2.0.12</slf4j.version>
-        <pi4j.version>2.5.1</pi4j.version>
+        <pi4j.version>2.6.0</pi4j.version>
 
         <!-- BUILD PLUGIN VERSIONS -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -33,15 +32,21 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.4.14</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.13</version>
         </dependency>
+
 
         <!-- include Pi4J Core -->
         <dependency>
@@ -60,6 +65,12 @@
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-plugin-linuxfs</artifactId>
             <version>${pi4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.1.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
