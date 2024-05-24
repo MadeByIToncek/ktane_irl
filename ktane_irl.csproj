@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PublishAot>true</PublishAot>
+	  <IsAotCompatible>true</IsAotCompatible>
+	  <OptimizationPreference>Speed</OptimizationPreference>
     <InvariantGlobalization>true</InvariantGlobalization>
     <Platforms>AnyCPU;ARM64;ARM32;x64;x86</Platforms>
   </PropertyGroup>
