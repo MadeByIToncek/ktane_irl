@@ -1,3 +1,16 @@
+/*
+ *
+ * ██╗  ██╗████████╗ █████╗ ███╗   ██╗███████╗    ██╗██████╗ ██╗
+ * ██║ ██╔╝╚══██╔══╝██╔══██╗████╗  ██║██╔════╝    ██║██╔══██╗██║
+ * █████╔╝    ██║   ███████║██╔██╗ ██║█████╗      ██║██████╔╝██║
+ * ██╔═██╗    ██║   ██╔══██║██║╚██╗██║██╔══╝      ██║██╔══██╗██║
+ * ██║  ██╗   ██║   ██║  ██║██║ ╚████║███████╗    ██║██║  ██║███████╗
+ * ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝    ╚═╝╚═╝  ╚═╝╚══════╝
+ *
+ *            Licensed under terms in LICENSE.md
+ *                 Made by IToncek & JellyCZ
+ */
+
 package space.itoncek.ktane_irl;
 
 import com.pi4j.boardinfo.util.BoardInfoHelper;
@@ -8,9 +21,9 @@ import java.util.Scanner;
 import java.util.StringJoiner;
 
 public class KtaneIRL {
+	public static final String prefix = ";";
 	private static final I2CLib lib = new I2CLib();
 	private static final Console log = new Console();
-	public static final String prefix = ";";
 
 	public static void main(String[] args) {
 		System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "INFO");
@@ -26,7 +39,7 @@ public class KtaneIRL {
 		while (sc.hasNextLine()) {
 			String line = sc.nextLine();
 			CommandParser.Commands parse = CommandParser.parse(line);
-			if(parse != null) {
+			if (parse != null) {
 				switch (parse) {
 					case HELP -> printHelp();
 					case STATUS -> printStatus();
@@ -40,7 +53,7 @@ public class KtaneIRL {
 	private static void printHelp() {
 		ArrayList<String> list = new ArrayList<>();
 		for (CommandParser.Commands value : CommandParser.Commands.values()) {
-			list.add(prefix+value.commands[0] + " --> " + value.description);
+			list.add(prefix + value.commands[0] + " --> " + value.description);
 			list.add("\tAlternatives: " + getAlternatives(value.commands));
 			list.add("\t");
 		}
@@ -51,7 +64,7 @@ public class KtaneIRL {
 	private static String getAlternatives(String[] commands) {
 		StringJoiner js = new StringJoiner(", ");
 		for (String command : commands) {
-			js.add(prefix+command);
+			js.add(prefix + command);
 		}
 		return js.toString();
 	}

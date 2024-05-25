@@ -1,3 +1,16 @@
+/*
+ *
+ * ██╗  ██╗████████╗ █████╗ ███╗   ██╗███████╗    ██╗██████╗ ██╗
+ * ██║ ██╔╝╚══██╔══╝██╔══██╗████╗  ██║██╔════╝    ██║██╔══██╗██║
+ * █████╔╝    ██║   ███████║██╔██╗ ██║█████╗      ██║██████╔╝██║
+ * ██╔═██╗    ██║   ██╔══██║██║╚██╗██║██╔══╝      ██║██╔══██╗██║
+ * ██║  ██╗   ██║   ██║  ██║██║ ╚████║███████╗    ██║██║  ██║███████╗
+ * ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝    ╚═╝╚═╝  ╚═╝╚══════╝
+ *
+ *            Licensed under terms in LICENSE.md
+ *                 Made by IToncek & JellyCZ
+ */
+
 package space.itoncek.ktane_irl;
 
 import com.pi4j.Pi4J;
@@ -37,11 +50,11 @@ public class I2CLib implements Closeable {
 	Timer timer = new Timer();
 
 	public I2CLib() {
-		timer.scheduleAtFixedRate(queueDispatcher,10,10);
+		timer.scheduleAtFixedRate(queueDispatcher, 10, 10);
 	}
 
 	public void writeDataToBus(int target, byte @NotNull ... data) {
-		queue.add(new BinaryData(target,null, data));
+		queue.add(new BinaryData(target, null, data));
 	}
 
 	public void writeDataToBus(int target, @NotNull CharSequence data) {
@@ -59,8 +72,8 @@ public class I2CLib implements Closeable {
 	public record BinaryData(int target, @Nullable CharSequence string, byte @Nullable ... byteArray) {
 		short type() {
 			short ret = 0;
-			if(string != null) ret+=1;
-			if(byteArray != null) ret+=2;
+			if (string != null) ret += 1;
+			if (byteArray != null) ret += 2;
 			return ret;
 		}
 	}
