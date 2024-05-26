@@ -13,17 +13,21 @@
 
 package space.itoncek.ktane_irl;
 
+import com.pi4j.Pi4J;
 import com.pi4j.boardinfo.util.BoardInfoHelper;
+import com.pi4j.io.i2c.I2C;
 import com.pi4j.util.Console;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
+import static space.itoncek.ktane_irl.Setup.runSetup;
+
 public class KtaneIRL {
 	public static final String prefix = ";";
 	private static final I2CLib lib = new I2CLib();
-	private static final Console log = new Console();
+	public static final Console log = new Console();
 
 	public static void main(String[] args) {
 		System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "INFO");
@@ -31,11 +35,12 @@ public class KtaneIRL {
 
 		Runtime.getRuntime().addShutdownHook(new Thread(KtaneIRL::shutdown));
 
-		setupInputScanner();
+		setupMainConsole();
 	}
 
-	private static void setupInputScanner() {
+	public static void setupMainConsole() {
 		Scanner sc = new Scanner(System.in);
+		InterruptReason reason = InterruptReason.NATURAL;
 		while (sc.hasNextLine()) {
 			String line = sc.nextLine();
 			CommandParser.Commands parse = CommandParser.parse(line);
@@ -44,9 +49,34 @@ public class KtaneIRL {
 					case HELP -> printHelp();
 					case STATUS -> printStatus();
 					case FORCEGC -> runGC();
+					case TEST -> runTest();
+					case SETUP -> {
+						reason = InterruptReason.SETUP;
+					}
 					case SAFE_EXIT, EXIT -> System.exit(0);
 				}
+
+				if (reason != InterruptReason.NATURAL) {
+					break;
+				}
 			}
+		}
+		sc.close();
+		switch (reason) {
+			case NATURAL -> System.exit(0);
+			case SETUP -> runSetup();
+		}
+	}
+
+	private static void runTest() {
+		try (I2C i2c = Pi4J.newAutoContext().i2c().create(1, 8)) {
+			int i = i2c.read();
+			log.print(i + " bits shall be read.");
+			char[] bytes = new char[i];
+			int read = i2c.read(bytes, 0, i);
+			//String s = new String(bytes);
+			log.print(read + " bytes were read.");
+			log.print(new String(bytes));
 		}
 	}
 
