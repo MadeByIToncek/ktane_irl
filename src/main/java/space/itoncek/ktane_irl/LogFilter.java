@@ -11,8 +11,22 @@
  *                 Made by IToncek & JellyCZ
  */
 
+/*
+ *
+ * ██╗  ██╗████████╗ █████╗ ███╗   ██╗███████╗    ██╗██████╗ ██╗
+ * ██║ ██╔╝╚══██╔══╝██╔══██╗████╗  ██║██╔════╝    ██║██╔══██╗██║
+ * █████╔╝    ██║   ███████║██╔██╗ ██║█████╗      ██║██████╔╝██║
+ * ██╔═██╗    ██║   ██╔══██║██║╚██╗██║██╔══╝      ██║██╔══██╗██║
+ * ██║  ██╗   ██║   ██║  ██║██║ ╚████║███████╗    ██║██║  ██║███████╗
+ * ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝    ╚═╝╚═╝  ╚═╝╚══════╝
+ *
+ *            Licensed under terms in LICENSE.md
+ *                 Made by IToncek & JellyCZ
+ */
+
 package space.itoncek.ktane_irl;
 
+import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.filter.Filter;
 import ch.qos.logback.core.spi.FilterReply;
@@ -21,6 +35,9 @@ public class LogFilter extends Filter<ILoggingEvent> {
 
 	@Override
 	public FilterReply decide(ILoggingEvent event) {
+		if (event.getLevel().levelInt < Level.INFO_INT) {
+			return FilterReply.DENY;
+		}
 		if (event.getLoggerName().contains("com.pi4j.")) {
 			if (event.getLoggerName().contains("com.pi4j.util")) {
 				return FilterReply.ACCEPT;
