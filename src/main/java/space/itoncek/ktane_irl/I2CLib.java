@@ -7,7 +7,7 @@
  * ██║  ██╗   ██║   ██║  ██║██║ ╚████║███████╗    ██║██║  ██║███████╗
  * ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝    ╚═╝╚═╝  ╚═╝╚══════╝
  *
- *            Licensed under terms in LICENSE.md
+ *            Licensed under terms in LICENSE
  *                 Made by IToncek & JellyCZ
  */
 
