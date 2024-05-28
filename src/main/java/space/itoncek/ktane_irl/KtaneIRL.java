@@ -15,10 +15,13 @@ package space.itoncek.ktane_irl;
 
 import com.pi4j.Pi4J;
 import com.pi4j.boardinfo.util.BoardInfoHelper;
+import com.pi4j.context.Context;
+import com.pi4j.io.gpio.digital.*;
 import com.pi4j.io.i2c.I2C;
 import com.pi4j.util.Console;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.StringJoiner;
 
@@ -35,7 +38,29 @@ public class KtaneIRL {
 
 		Runtime.getRuntime().addShutdownHook(new Thread(KtaneIRL::shutdown));
 
-		setupMainConsole();
+//		setupMainConsole();
+		Context pi4j = Pi4J.newAutoContext();
+
+		DigitalInputConfig config = DigitalInput.newConfigBuilder(pi4j)
+				.pull(PullResistance.PULL_DOWN)
+				.address(4)
+				.build();
+
+		DigitalInputProvider provider = pi4j.provider("gpiod-digital-input");
+		DigitalInput input = provider.create(config);
+
+		input.addListener(e -> {
+			if (e.state() == DigitalState.LOW) {
+				try (I2C i2c = Pi4J.newAutoContext().i2c().create(1, 0x20, "PCF8574")) {
+					log.println(Integer.toBinaryString(i2c.read()));
+					i2c.write(new Random().nextInt(0, 0b11111111));
+				}
+			} else {
+				log.print("reset");
+			}
+		});
+
+		System.out.println("input.isHigh() = " + input.isHigh());
 	}
 
 	public static void setupMainConsole() {
