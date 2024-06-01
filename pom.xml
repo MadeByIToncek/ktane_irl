@@ -37,7 +37,7 @@
 
         <!-- BUILD PLUGIN VERSIONS -->
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-jar-plugin.version>3.1.0</maven-jar-plugin.version>
+        <maven-jar-plugin.version>3.4.1</maven-jar-plugin.version>
         <maven-shade-plugin.version>3.2.4</maven-shade-plugin.version>
     </properties>
 
