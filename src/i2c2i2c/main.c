@@ -2,8 +2,9 @@
 #include <util/delay.h>
 #include "status.h"
 
-int main(void) {
-    DDRB |= (1 << DDB0) | (1 << DDB1);
+int
+main(void) {
+    DDRB |= (1 << DDB0) | (1 << DDB1); // Setting output pins
 
     enum BLINKSTATUS status = NORMAL;
 
