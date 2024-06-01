@@ -7,3 +7,6 @@ i2c2i2c.elf: main.c
 
 flash: all
 	micronucleus --timeout 60 --run --no-ansi i2c2i2c.hex
+
+clean: all
+	rm -v *hex *.elf
