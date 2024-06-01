@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-          cache-dependency-path: '/home/runner/work/ktane_irl/ktane_irl/docs/yarn.lock'
+          cache-dependency-path: docs/yarn.lock
 
       - name: Install dependencies
         run: |
