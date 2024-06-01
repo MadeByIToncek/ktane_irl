@@ -72,8 +72,8 @@ public class I2CLib implements Closeable {
 	public record BinaryData(int target, @Nullable CharSequence string, byte @Nullable ... byteArray) {
 		short type() {
 			short ret = 0;
-			if (string != null) ret += 1;
-			if (byteArray != null) ret += 2;
+			if (string != null) ret += (short) 1;
+			if (byteArray != null) ret += (short) 2;
 			return ret;
 		}
 	}
