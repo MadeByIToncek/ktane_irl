@@ -6,7 +6,8 @@
 //#error "Specify status led in STATUS_LED"
 //#endif
 
-enum BLINKSTATUS {
+enum
+BLINKSTATUS {
     NORMAL,
     ERROR
 };
