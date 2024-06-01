@@ -13,12 +13,26 @@
 
 package space.itoncek.ktane_irl.modules;
 
-public interface IModule {
-	boolean requiresSoftwareSetup();
+import de.codeshelf.consoleui.prompt.builder.PromptBuilder;
 
-	boolean requiresHardwareSetup();
+import java.io.Serializable;
 
-	void setupSoftware();
+public interface IModule extends Serializable {
+	/**
+	 * Setup all hardware requirements
+	 */
+	void setup(PromptBuilder promptBuilder, int order);
 
-	void setupHardware();
+	/**
+	 * Fetch short description of said module
+	 *
+	 * @return Name of this module
+	 */
+	String describe();
+
+	/**
+	 * Fetch module identificator
+	 * @return Identificator for this module
+	 */
+	String ident();
 }

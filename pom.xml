@@ -87,6 +87,12 @@
             <artifactId>pi4j-plugin-gpiod</artifactId>
             <version>${pi4j.version}</version>
         </dependency>
+        <!-- include Console UI -->
+        <dependency>
+            <groupId>de.codeshelf.consoleui</groupId>
+            <artifactId>consoleui</artifactId>
+            <version>0.0.13</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -40,7 +40,9 @@ public class CommandParser {
 		SAFE_EXIT("Terminates program execution, saves progress (virtual game pause)", "safe_exit", "sx"),
 		EXIT("Terminates program execution, saves nothing!", "exit", "quit", "stop", "shutdown", "q"),
 		TEST("Current experimental function", "t", "test"),
-		SETUP("Initiates game setup", "setup", "s");
+		SETUP("Initiates game setup", "setup", "s"),
+		SAVE("Saves current bomb setup", "save"),
+		LOAD("Loads bomb state from before", "load");
 
 		public final String description;
 		public final String[] commands;
