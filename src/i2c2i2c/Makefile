@@ -8,3 +8,8 @@ upload:
 	micronucleus --timeout 60 --run --no-ansi target/avr-attiny85/release/i2c2i2c.hex
 
 .PHONY: upload
+
+clean:
+	cargo clean
+
+.PHONY: clean
