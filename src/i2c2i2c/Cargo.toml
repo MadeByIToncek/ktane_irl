@@ -17,5 +17,4 @@ opt-level = "s"
 
 [dependencies]
 attiny-hal = { git = "https://github.com/rahix/avr-hal", features = ["attiny85"] }
-[dependencies.avr-hal-generic]
-git = "https://github.com/rahix/avr-hal"
+bit-struct = "0.3.2"
